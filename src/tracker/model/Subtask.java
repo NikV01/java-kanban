@@ -1,3 +1,5 @@
+package tracker.model;
+
 public class Subtask extends Task {
     private final Epic parentEpic;
 
@@ -20,7 +22,7 @@ public class Subtask extends Task {
 
     @Override
     public String toString() {
-        return "Subtask{" +
+        return "tracker.model.Subtask{" +
                 "id=" + getId() +
                 ", name='" + getName() + '\'' +
                 ", description='" + getDescription() + '\'' +

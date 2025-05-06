@@ -1,5 +1,9 @@
-import java.util.*;
+package tracker.controllers;
 
+import java.util.*;
+import tracker.model.Epic;
+import tracker.model.Subtask;
+import tracker.model.Task;
 public class TaskManager {
     private int nextId = 1;
 
@@ -43,12 +47,8 @@ public class TaskManager {
     }
 
     public void removeAllEpics() {
-        for (Epic epic : epics.values()) {
-            for (Subtask sub : epic.getSubtasks()) {
-                subtasks.remove(sub.getId());
-            }
-        }
         epics.clear();
+        subtasks.clear();
     }
 
     public Epic getEpicById(int id) {
@@ -98,7 +98,6 @@ public class TaskManager {
     public void addSubtask(Subtask subtask) {
         Epic parent = subtask.getParentEpic();
         if (parent == null || !epics.containsKey(parent.getId())) {
-            System.out.println("Нельзя добавить подзадачу без подходящего эпика.");
             return;
         }
         subtask.setId(generateId());

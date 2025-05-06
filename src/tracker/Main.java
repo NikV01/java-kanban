@@ -1,3 +1,9 @@
+package tracker;
+import tracker.controllers.TaskManager;
+import tracker.model.Epic;
+import tracker.model.Subtask;
+import tracker.model.Task;
+import tracker.model.TaskStatus;
 public class Main {
     public static void main(String[] args) {
         TaskManager manager = new TaskManager();
