@@ -24,14 +24,6 @@ public class InMemoryTaskManager implements TaskManager {
         return nextId++;
     }
 
-    private void addToHistory(Task task) {
-        if (task == null) return;
-        history.addLast(task);
-        if (history.size() > 10) {
-            history.removeFirst();
-        }
-    }
-
 
     @Override
     public List<Task> getAllTasks() {
