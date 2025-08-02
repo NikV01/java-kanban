@@ -1,4 +1,6 @@
 package tracker;
+import tracker.controllers.InMemoryTaskManager;
+import tracker.controllers.Managers;
 import tracker.controllers.TaskManager;
 import tracker.model.Epic;
 import tracker.model.Subtask;
@@ -6,7 +8,8 @@ import tracker.model.Task;
 import tracker.model.TaskStatus;
 public class Main {
     public static void main(String[] args) {
-        TaskManager manager = new TaskManager();
+        TaskManager manager = Managers.getDefault();
+
 
         Task task1 = new Task(0, "Прогуляться", "Выйти на улицу", TaskStatus.NEW);
         Task task2 = new Task(0, "Попить", "Выпить воды", TaskStatus.NEW);
@@ -66,5 +69,19 @@ public class Main {
         for (Task sub : manager.getAllSubtasks()) {
             System.out.println(sub);
         }
+
+        System.out.println("\nИстория просмотров:");
+        manager.getTaskById(task1.getId());
+        manager.getEpicById(epic1.getId());
+        manager.getSubtaskById(subtask1.getId());
+        manager.getSubtaskById(subtask2.getId());
+        manager.getTaskById(task1.getId());
+        manager.getEpicById(epic1.getId());
+
+        for (Task viewed : manager.getHistory()) {
+            System.out.println(viewed);
+        }
+
+
     }
 }
